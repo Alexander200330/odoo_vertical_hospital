@@ -72,7 +72,7 @@
          <menuitem name="Vertical Hospital" id="odoo_vertical_hospital.menu_root"
             web_icon="Vertical Hospital,static/description/icon.png" sequence="10" />
 
-        <!-- Definir el submenu para pacientes -->
+        <!-- Definir el submenu para pacientes -->                                                                                                                          
         <menuitem id="odoo_vertical_hospital.menu_patients" name="Pacientes" parent="odoo_vertical_hospital.menu_root" sequence="1"/>
 
         <menuitem name="Pacientes" id="odoo_vertical_hospital.menu_patient"
