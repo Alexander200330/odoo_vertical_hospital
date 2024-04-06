@@ -39,8 +39,8 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
-        'views/view_patient.xml',
-        'views/view_treatment.xml',
+        'views/patient_views.xml',
+        'views/treatment_views.xml',
         'views/res_config_settings_views.xml',
         'views/templates.xml',
     ],
@@ -48,5 +48,4 @@
     'demo': [
         'demo/demo.xml',
     ],
-    'images': ['static/description/icon.png'],
 }
