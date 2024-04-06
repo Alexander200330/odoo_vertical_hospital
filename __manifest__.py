@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Vertical Hospital",
+    'name': "odoo_vertical_hospital",
 
     'summary': """
         Aplicación para gestión hospitalaria que incluye registro de pacientes, generación de reportes en PDF,
@@ -39,11 +39,12 @@
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
-        'views/views.xml',
+        'views/view_patient.xml',
         'views/templates.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
     ],
+    'images': ['static/description/icon.png'],
 }

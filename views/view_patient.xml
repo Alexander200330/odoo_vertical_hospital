@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Vista Formulario -->
+        <record id="view_patient_form" model="ir.ui.view">
+            <field name="name">odoo_vertical_hospital.patient.form</field>
+            <field name="model">odoo_vertical_hospital.patient</field>
+            <field name="arch" type="xml">
+                <form string="Formulario de Pacientes">
+                    <sheet>
+                        <group name="group_top">
+                            <group name="group_left">
+                                <field name="rnc"/>
+                                <field name="first_name"/>
+                                <field name="last_name"/>
+                            </group>
+                            <group name="group_right">
+                                <field name="date_admission"/>
+                                <field name="__last_update" readonly="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Vista Tree -->
+        <record id="view_patient_tree" model="ir.ui.view">
+            <field name="name">odoo_vertical_hospital.patient.tree</field>
+            <field name="model">odoo_vertical_hospital.patient</field>
+            <field name="arch" type="xml">
+                <tree string="Lista de Pacientes">
+                    <field name="rnc"/>
+                    <field name="first_name"/>
+                    <field name="last_name"/>
+                    <field name="date_admission"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+       <record id="action_patient_view" model="ir.actions.act_window">
+            <field name="name">Pacientes</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">odoo_vertical_hospital.patient</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Definir el menú principal -->
+
+         <menuitem name="Vertical Hospital" id="odoo_vertical_hospital.menu_root"
+            web_icon="odoo_vertical_hospital,static/description/icon.png" sequence="10" />
+
+        <!-- Definir el submenu para pacientes -->
+        <menuitem id="odoo_vertical_hospital.menu_patients" name="Pacientes" parent="odoo_vertical_hospital.menu_root" sequence="1"/>
+
+        <menuitem name="Pacientes" id="odoo_vertical_hospital.menu_patient"
+            parent="odoo_vertical_hospital.menu_patients"
+            action="action_patient_view" />
+        </data>
+</odoo>
