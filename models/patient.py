@@ -1,4 +1,5 @@
 from odoo import models, fields, api, _
+from odoo.exceptions import ValidationError
 
 class Patient(models.Model):
     _name = 'odoo_vertical_hospital.patient'
@@ -17,3 +18,10 @@ class Patient(models.Model):
         if vals.get('name', _('New')) == _('New'):
             vals['name'] = self.env['ir.sequence'].next_by_code('odoo_vertical_hospital.patient.sequence') or _('New')
         return super(Patient, self).create(vals)
+    
+    @api.constrains('rnc')
+    def _check_rnc(self):
+        for record in self:
+            rnc = record.rnc
+            if rnc and not rnc.isdigit():
+                raise ValidationError("El RNC debe contener solo números.")
