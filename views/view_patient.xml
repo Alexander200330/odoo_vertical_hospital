@@ -13,13 +13,14 @@
                     <sheet>
                         <group name="group_top">
                             <group name="group_left">
+                                <field name="name" readonly="1"/>
                                 <field name="rnc"/>
                                 <field name="first_name"/>
                                 <field name="last_name"/>
                             </group>
                             <group name="group_right">
                                 <field name="date_admission"/>
-                                <field name="__last_update" readonly="1"/>
+                                <field name="__last_update" string="Última Actualización" readonly="1"/>
                             </group>
                         </group>
                     </sheet>
@@ -33,10 +34,10 @@
             <field name="model">odoo_vertical_hospital.patient</field>
             <field name="arch" type="xml">
                 <tree string="Lista de Pacientes">
-                    <field name="rnc"/>
+                    <field name="name"/>
                     <field name="first_name"/>
                     <field name="last_name"/>
-                    <field name="date_admission"/>
+                    <field name="rnc"/>
                     <field name="state"/>
                 </tree>
             </field>
@@ -61,4 +62,12 @@
             parent="odoo_vertical_hospital.menu_patients"
             action="action_patient_view" />
         </data>
+
+        <record id="sequence_patient" model="ir.sequence">
+            <field name="name">Patient Sequence</field>
+            <field name="code">odoo_vertical_hospital.patient.sequence</field>
+            <field name="prefix">PA</field>
+            <field name="padding">6</field>
+        </record>
+
 </odoo>
