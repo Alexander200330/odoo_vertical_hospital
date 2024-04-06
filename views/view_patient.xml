@@ -7,6 +7,9 @@
             <field name="model">odoo_vertical_hospital.patient</field>
             <field name="arch" type="xml">
                 <form string="Formulario de Pacientes">
+                    <header>
+                            <field name="state" widget="statusbar" statusbar_visible="draft,admission,discharge" options="{'clickable' : '1'}"/>
+                    </header>
                     <sheet>
                         <group name="group_top">
                             <group name="group_left">
