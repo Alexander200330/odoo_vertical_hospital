@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_odoo_vertical_hospital_odoo_vertical_hospital,odoo_vertical_hospital.odoo_vertical_hospital,model_odoo_vertical_hospital_odoo_vertical_hospital,base.group_user,1,1,1,1
