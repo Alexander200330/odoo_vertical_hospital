@@ -1,24 +1,31 @@
 <odoo>
     <data>
-<!--
-        <template id="listing">
-          <ul>
-            <li t-foreach="objects" t-as="object">
-              <a t-attf-href="#{ root }/objects/#{ object.id }">
-                <t t-esc="object.display_name"/>
-              </a>
-            </li>
-          </ul>
+        <report
+          string="Informe de Pacientes"
+          id="odoo_vertical_hospital.patient_report"
+          model="odoo_vertical_hospital.patient"
+          report_type="qweb-pdf"
+          name="odoo_vertical_hospital.patient_report_card"
+          file="odoo_vertical_hospital.patient_report_card"
+      />
+
+      <template id="custom_page">
+          <xpath expr="//div[@class='page']" position="replace">
+            <div class="page">
+                <t t-foreach="docs" t-as="o">
+                <h1>Información del paciente</h1>
+                </t>
+            </div>
+            </xpath>
         </template>
-        <template id="object">
-          <h1><t t-esc="object.display_name"/></h1>
-          <dl>
-            <t t-foreach="object._fields" t-as="field">
-              <dt><t t-esc="field"/></dt>
-              <dd><t t-esc="object[field]"/></dd>
+
+        <template id="odoo_vertical_hospital.patient_report_card">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <t t-call="odoo_vertical_hospital.custom_page"/>
+                </t>
             </t>
-          </dl>
         </template>
--->
+
     </data>
 </odoo>
