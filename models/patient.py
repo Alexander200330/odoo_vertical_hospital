@@ -16,12 +16,17 @@ class Patient(models.Model):
 
     @api.model
     def create(self, vals):
+        """Obtener la siguiente secuencia en la creación de un nuevo registro.
+        """
         if vals.get('name', _('New')) == _('New'):
             vals['name'] = self.env['ir.sequence'].next_by_code('odoo_vertical_hospital.patient.sequence') or _('New')
         return super(Patient, self).create(vals)
     
     @api.constrains('rnc')
     def _check_rnc(self):
+        """
+            Constraint para asegurar que no se escriban letras en el campo RNC.
+        """
         for record in self:
             rnc = record.rnc
             if rnc and not rnc.isdigit():
@@ -32,7 +37,7 @@ class PatientTreatment(models.Model):
     _description = 'Tratamientos Realizados por Pacientes'
 
     patient_id = fields.Many2one('odoo_vertical_hospital.patient', string='Paciente')
-    treatment_id = fields.Many2one('odoo_vertical_hospital.treatment', string='Tratamiento Realizado')
+    treatment_id = fields.Many2one('odoo_vertical_hospital.treatment', string='Tratamiento Realizado', required=True)
 
     # Campos relacionados para mostrar el código y nombre del tratamiento
     treatment_code = fields.Char(string='Código del Tratamiento', related='treatment_id.name', readonly=True)
