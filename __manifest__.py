@@ -40,6 +40,7 @@
     'data': [
         # 'security/ir.model.access.csv',
         'views/view_patient.xml',
+        'views/view_treatment.xml',
         'views/templates.xml',
     ],
     # only loaded in demonstration mode

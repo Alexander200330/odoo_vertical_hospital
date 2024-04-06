@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Vista Formulario -->
+        <record id="view_treatment_form" model="ir.ui.view">
+            <field name="name">odoo_vertical_hospital.treatment.form</field>
+            <field name="model">odoo_vertical_hospital.treatment</field>
+            <field name="arch" type="xml">
+                <form string="Formulario de Tratamientos">
+                    <sheet>
+                        <group name="group_top">
+                            <group name="group_left">
+                                <field name="name"/>
+                                <field name="treatment_name"/>
+                                <field name="treating_physician"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Vista Tree -->
+        <record id="view_treatment_tree" model="ir.ui.view">
+            <field name="name">odoo_vertical_hospital.treatment.tree</field>
+            <field name="model">odoo_vertical_hospital.treatment</field>
+            <field name="arch" type="xml">
+                <tree string="Lista de Tratamientos">
+                    <field name="name"/>
+                    <field name="treatment_name"/>
+                    <field name="treating_physician"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Acción para la vista de tratamientos -->
+        <record id="action_treatment_view" model="ir.actions.act_window">
+            <field name="name">Tratamientos</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">odoo_vertical_hospital.treatment</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Tratamientos" id="odoo_vertical_hospital.menu_treatments"
+            parent="odoo_vertical_hospital.menu_root"
+            action="action_treatment_view" sequence="2"/>
+    </data>
+</odoo>

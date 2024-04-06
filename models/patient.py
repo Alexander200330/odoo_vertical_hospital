@@ -10,7 +10,7 @@ class Patient(models.Model):
     first_name = fields.Char(string='Nombre')
     last_name = fields.Char(string='Apellido')
     rnc = fields.Char(string='RNC', size=11, tracking=True)
-    date_admission = fields.Datetime(string='Fecha de Alta', default=fields.Datetime.now)
+    date_admission = fields.Datetime(string='Fecha de Alta')
     state = fields.Selection([('draft', 'Borrador'), ('admission', 'Alta'), ('discharge', 'Baja')], string='Estado', default='draft', tracking=True)
 
     @api.model
