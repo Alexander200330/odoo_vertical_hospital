@@ -9,77 +9,70 @@
           file="odoo_vertical_hospital.patient_report_card"
       />
 
-      <template id="custom_page">
-        <xpath expr="//div[@class='page']" position="replace">
-            <div class="page">
-                <t t-foreach="docs" t-as="o">
-                  <style>
-                      /* Reglas de estilo CSS para afectar a todo el contenido */
-                      body {
-                          font-size: 18px;
-                      }
-                  </style>
-                    <h1 class="fw-bold" style="margin-bottom:20px">Información Del Paciente</h1>
+      <template id="odoo_vertical_hospital.patient_report_card">
+        <t t-foreach="docs" t-as="o">
+          <t t-call="web.html_container">
+                  <t t-call="web.external_layout">
+                  <xpath expr="//div[@class='page']" position="replace">
+                      <div class="page">
+                          <style>
+                              /* Reglas de estilo CSS para afectar a todo el contenido */
+                              body {
+                                  font-size: 18px;
+                              }
+                          </style>
+                            <h1 class="fw-bold" style="margin-bottom:20px">Información Del Paciente</h1>
 
-                    <div class="row border-bottom border-top">
-                        <div class="col-6"><strong>Número de Paciente</strong></div>
-                        <div class="col-6"><span t-field="o.name"></span></div>
+                            <div class="row border-bottom border-top">
+                                <div class="col-6"><strong>Número de Paciente</strong></div>
+                                <div class="col-6"><span t-field="o.name"></span></div>
+                              </div>
+                            <div class="row border-bottom">
+                                <div class="col-6"><strong>RNC</strong></div>
+                                <div class="col-6"><span t-field="o.rnc"></span></div>
+                            </div>
+                            <div class="row border-bottom">
+                                <div class="col-6"><strong>Nombre</strong></div>
+                                <div class="col-6"><span t-field="o.first_name"></span></div>
+                            </div>
+                            <div class="row border-bottom">
+                                <div class="col-6"><strong>Apellido</strong></div>
+                                <div class="col-6"><span t-field="o.last_name"></span></div>
+                            </div>
+                            <div class="row border-bottom">
+                                <div class="col-6"><strong>Fecha de alta</strong></div>
+                                <div class="col-6"><span t-field="o.date_admission"></span></div>
+                            </div>
+                            <div class="row border-bottom">
+                                <div class="col-6"><strong>Estado</strong></div>
+                                <div class="col-6"><span t-field="o.state"></span></div>
+                            </div>
+
+                            <h3 class="fw-bold" style="margin-top:20px; margin-bottom:20px">Tratamientos Realizados</h3>
+
+                            <!-- Tabla para los tratamientos realizados -->
+                            <table class="table">
+                              <thead>
+                                <tr>
+                                  <th scope="col-6">Nombre Del Tratamiento</th>
+                                  <th scope="col-6">Código</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <t t-foreach="o.treatment_ids" t-as="treatment">
+                                  <tr>
+                                    <td><span t-esc="treatment.treatment_name"></span></td>
+                                    <td><span t-esc="treatment.treatment_code" /></td>
+                                  </tr>
+                                </t>
+                              </tbody>
+                          </table>
                       </div>
-                    <div class="row border-bottom">
-                        <div class="col-6"><strong>RNC</strong></div>
-                        <div class="col-6"><span t-field="o.rnc"></span></div>
-                    </div>
-                    <div class="row border-bottom">
-                        <div class="col-6"><strong>Nombre</strong></div>
-                        <div class="col-6"><span t-field="o.first_name"></span></div>
-                    </div>
-                    <div class="row border-bottom">
-                        <div class="col-6"><strong>Apellido</strong></div>
-                        <div class="col-6"><span t-field="o.last_name"></span></div>
-                    </div>
-                    <div class="row border-bottom">
-                        <div class="col-6"><strong>Fecha de alta</strong></div>
-                        <div class="col-6"><span t-field="o.date_admission"></span></div>
-                    </div>
-                    <div class="row border-bottom">
-                        <div class="col-6"><strong>Estado</strong></div>
-                        <div class="col-6"><span t-field="o.state"></span></div>
-                    </div>
-
-                    <h3 class="fw-bold" style="margin-top:20px; margin-bottom:20px">Tratamientos Realizados</h3>
-
-                    <!-- Tabla para los tratamientos realizados -->
-                    <table class="table">
-                      <thead>
-                        <tr>
-                          <th scope="col-6">Nombre Del Tratamiento</th>
-                          <th scope="col-6">Código</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        
-                        <t t-foreach="o.treatment_ids" t-as="treatment">
-                          <tr>
-                            <td><span t-esc="treatment.treatment_name"></span></td>
-                            <td><span t-esc="treatment.treatment_code" /></td>
-                          </tr>
-                        </t>
-                        
-                      </tbody>
-                    </table>
-                </t>
-            </div>
-          </xpath>
-        </template>
-
-        <template id="odoo_vertical_hospital.patient_report_card">
-            
-            <t t-call="web.external_layout">
-                <t t-call="web.html_container">
-                    <t t-call="odoo_vertical_hospital.custom_page"/>
-                </t>
+                </xpath>
             </t>
-        </template>
+          </t>
+        </t>
+      </template>
 
     </data>
 </odoo>
